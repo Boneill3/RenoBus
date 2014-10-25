@@ -1,14 +1,13 @@
 namespace :nextbus do
   desc 'Sync latest data from NextBus api'
   task sync: :environment  do
-    Nextbus::Service.route_configs.each.with_index do |r, i|
-
+    NextBus::Service.route_configs.each.with_index do |r, i|
 
       route = Route.find_or_initialize_by(tag: r.tag)
-      route.update!(tag: r.tag, title: r.title)
+      route.update!(r.to_hash)
 
       r.stops.each do |s|
-        Stop.find_or_initialize_by(tag: s.tag).update(tag: s.tag, title: s.title, lat: s.lat, lon: s.lon)
+        Stop.find_or_initialize_by(tag: s.tag).update!(s.to_hash)
       end
 
       r.directions.each do |d|
