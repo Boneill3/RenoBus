@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Reno Bus</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="layout.css">
+
+		
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+			function initialize() {
+			  var mapOptions = {
+			    zoom: 14,
+			    center: new google.maps.LatLng(39.527222, -119.821944),
+			  };
+
+			  var map = new google.maps.Map(document.getElementById('map-canvas'),
+			      mapOptions);
+
+			  var busPlanInboundCoordinates = [
+			    new google.maps.LatLng(39.47201, -119.78316),
+			    new google.maps.LatLng(39.47176, -119.7828),
+			    new google.maps.LatLng(39.4715599, -119.78173),
+			    new google.maps.LatLng(39.47158, -119.78137),
+			    new google.maps.LatLng(39.47179, -119.78083),
+			    new google.maps.LatLng(39.47192, -119.78056),
+			    new google.maps.LatLng(39.4721, -119.78032),
+			    new google.maps.LatLng(39.4723, -119.78013)
+			  ];
+			  var busPathInbound = new google.maps.Polyline({
+			    path: busPlanInboundCoordinates,
+			    geodesic: true,
+			    strokeColor: '#992ac5',
+			    strokeOpacity: .3,
+			    strokeWeight: 4
+			  });
+			  busPathInbound.setMap(map);
+
+			  var busPlanOutboundCoordinates = [
+			    new google.maps.LatLng(39.47099, -119.78009),
+			    new google.maps.LatLng(39.47151, -119.77946),
+			    new google.maps.LatLng(39.47178, -119.77926),
+			    new google.maps.LatLng(39.47213, -119.77946),
+			    new google.maps.LatLng(39.47253, -119.78033),
+			    new google.maps.LatLng(39.47246, -119.78155),
+			    new google.maps.LatLng(39.47239, -119.78267),
+			    new google.maps.LatLng(39.47201, -119.78316)
+			  ];
+			  var busPathOutbound = new google.maps.Polyline({
+			    path: busPlanOutboundCoordinates,
+			    geodesic: true,
+			    strokeColor: '#992ac5',
+			    strokeOpacity: .6,
+			    strokeWeight: 4
+			  });
+			  busPathOutbound.setMap(map);
+
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+
+	</head>
+	<body>
+		<div class="container">
+			<div id="header" class="page-header">
+				<h1>Reno Bus</h1>
+			</div>
+			<div id="status" class="row well well-sm">
+				<h2>System Alerts</h2>
+				<h3>Route 56: posted Oct 24, 8:00 AM</h3>
+				<p>Expected through Oct 25, 5:00 PM<br />
+				Due to utility work at Longley and Huffaker, the route 56 is on detour OUTBOUND only. The two stops on Bluestone will be out of service. For the stop at Bluestone and Huffaker, passengers are directed to Colbert and Longley (across from the Rainbow Market) and for the stop at Bluestone and Portman, passengers are directed to the next stop on Offenhauser.</p>
+			</div>
+			<div class="row">
+				<div class="map_container">
+    			<div id="map-canvas" class="map_canvas col-md-8">
+    			</div>
+					<div id="route_select" class="col-md-4">
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>	
+</html>
