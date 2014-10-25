@@ -1,1 +1,9 @@
-<h1> Hi </h1>
+<div ng-controller='routesIndexCtrl' ng-init="init()">
+	<h1> {{message}}</h1>
+	<div id="map_canvas" width="500px" height='500px' >
+	  <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+	    <ui-gmap-polylines models="polyLines" path="'path'" stroke="'stroke'" visible="'visible'"
+			      geodesic="'geodesic'" fit="false" editable="'editable'" draggable="'draggable'" ></ui-gmap-polylines>
+	  </ui-gmap-google-map>
+       </div>
+</div>

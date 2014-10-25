@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+        #map_canvas {
+            height: 500px;
+            width: 500px;
+            margin: 0px;
+        }
+
+        #map_canvas {
+            position: relative;
+        }
+
+        .angular-google-map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
   <title>RenoBus</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>-->
 </head>
-<body>
+<body ng-app="renoBus">
 
 <%= yield %>
 

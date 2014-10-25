@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require 'angular'
 //= require 'angular-ui-router'
+//= require 'angular-rails-templates'
+//= require 'underscore'
+//= require 'angular-google-maps'
+//
+//= require 'app'
+//= require_tree './routes'
