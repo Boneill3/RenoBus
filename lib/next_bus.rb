@@ -16,7 +16,7 @@ module NextBus
       end
 
       def route_configs
-        NextBus::RouteConfigs.parse connection.get('', command: 'routeConfig', a: agency).body
+        NextBus::RouteConfig.create_from_xml connection.get('', command: 'routeConfig', a: agency).body
       end
 
       def schedule(routeTag)
