@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Sample Bus Map</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+
+function initialize() {
+  var mapOptions = {
+    zoom: 14,
+    center: new google.maps.LatLng(39.527222, -119.821944),
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  var busPlanInboundCoordinates = [
+    new google.maps.LatLng(39.47201, -119.78316),
+    new google.maps.LatLng(39.47176, -119.7828),
+    new google.maps.LatLng(39.4715599, -119.78173),
+    new google.maps.LatLng(39.47158, -119.78137),
+    new google.maps.LatLng(39.47179, -119.78083),
+    new google.maps.LatLng(39.47192, -119.78056),
+    new google.maps.LatLng(39.4721, -119.78032),
+    new google.maps.LatLng(39.4723, -119.78013)
+  ];
+  var busPathInbound = new google.maps.Polyline({
+    path: busPlanInboundCoordinates,
+    geodesic: true,
+    strokeColor: '#992ac5',
+    strokeOpacity: .3,
+    strokeWeight: 4
+  });
+  busPathInbound.setMap(map);
+
+  var busPlanOutboundCoordinates = [
+    new google.maps.LatLng(39.47099, -119.78009),
+    new google.maps.LatLng(39.47151, -119.77946),
+    new google.maps.LatLng(39.47178, -119.77926),
+    new google.maps.LatLng(39.47213, -119.77946),
+    new google.maps.LatLng(39.47253, -119.78033),
+    new google.maps.LatLng(39.47246, -119.78155),
+    new google.maps.LatLng(39.47239, -119.78267),
+    new google.maps.LatLng(39.47201, -119.78316)
+  ];
+  var busPathOutbound = new google.maps.Polyline({
+    path: busPlanOutboundCoordinates,
+    geodesic: true,
+    strokeColor: '#992ac5',
+    strokeOpacity: .6,
+    strokeWeight: 4
+  });
+  busPathOutbound.setMap(map);
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
