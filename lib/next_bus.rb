@@ -16,7 +16,7 @@ module NextBus
       end
 
       def route_configs
-        NextBus::RouteConfigs.parse connection.get('', command: 'routeConfig', a: agency, terse: true).body
+        NextBus::RouteConfigs.parse connection.get('', command: 'routeConfig', a: agency).body
       end
     end
   end

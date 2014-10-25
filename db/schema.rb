@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025204009) do
+ActiveRecord::Schema.define(version: 20141025213539) do
 
   create_table "direction_stops", force: true do |t|
     t.integer  "direction_id", null: false
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 20141025204009) do
     t.string   "title",      null: false
     t.string   "name",       null: false
     t.integer  "route_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "paths", force: true do |t|
+    t.integer  "route_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "points", force: true do |t|
+    t.integer  "path_id"
+    t.decimal  "lat",        precision: 10, scale: 6, null: false
+    t.decimal  "lon",        precision: 10, scale: 6, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

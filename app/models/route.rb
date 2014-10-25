@@ -1,5 +1,6 @@
 class Route < ActiveRecord::Base
   has_many :directions, dependent: :destroy
+  has_many :paths, dependent: :destroy
 
   validates :tag, presence: true
   validates :title, presence: true

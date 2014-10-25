@@ -2,12 +2,19 @@ namespace :nextbus do
   desc 'Sync latest data from NextBus api'
   task sync: :environment  do
     NextBus::Service.route_configs.each.with_index do |r, i|
-
       route = Route.find_or_initialize_by(tag: r.tag)
       route.update!(r.to_hash)
 
       r.stops.each do |s|
         Stop.find_or_initialize_by(tag: s.tag).update!(s.to_hash)
+      end
+
+      route.paths.destroy_all # No way to merge/update existing data
+      r.paths.each do |pa|
+        path = route.paths.create!
+        pa.points.each do |p|
+          path.points.create!(p.to_hash)
+        end
       end
 
       r.directions.each do |d|

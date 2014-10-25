@@ -1,6 +1,6 @@
 module NextBus
   class Route < APIObject
-    attr_accessor :stops, :directions
+    attr_accessor :stops, :directions, :paths
 
     prop :tag
     prop :title

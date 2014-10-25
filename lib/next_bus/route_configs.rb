@@ -14,7 +14,14 @@ module NextBus
                 Stop.new(s.attributes)
               end
             end
+          end
 
+          r.paths = route.css('path').map do |path|
+            p = Path.new
+            p.points = path.css('point').map do |point|
+              Point.new(point.attributes)
+            end
+            p
           end
         end
       end
