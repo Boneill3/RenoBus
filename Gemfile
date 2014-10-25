@@ -32,6 +32,7 @@ gem 'nokogiri'
 gem 'hashie'
 gem 'upsert'
 gem 'bower-rails'
+gem 'angular-rails-templates'
 
 group :development, :test do
   gem 'sqlite3'
