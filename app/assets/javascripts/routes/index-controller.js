@@ -8,6 +8,7 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesServi
   $scope.stops = [];
   $scope.routes = [];
   $scope.routes2 = [];
+  $scope.showAllRoutes = true;
   var stopData = [];
 
   $scope.init = function(data) {
@@ -33,6 +34,13 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesServi
         });
       })
     });
+  }
+
+  $scope.toggle = function() {
+    $scope.showAllRoutes = !$scope.showAllRoutes;
+    _.each($scope.polyLines, function(line) {
+      line.visible = $scope.showAllRoutes;
+    })
   }
 
   $scope.selectMarker = function(marker) {
