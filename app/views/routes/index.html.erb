@@ -2,7 +2,9 @@
 	<h1> {{message}}</h1>
 	<div id="map_canvas" width="500px" height='500px' >
 	  <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" events="events">
-	  <ui-gmap-markers models="stops" coords="'self'" icon="'../../images/dot.png'" control="markerControl"></ui-gmap-markers>
+	    <ui-gmap-markers models="stops" coords="'self'" doCluster="'true'" control="markerControl"></ui-gmap-markers>
+	    <ui-gmap-polylines models="polyLines" path="'path'" stroke="'stroke'" visible="'visible'"
+			      geodesic="'geodesic'" fit="false" editable="'editable'" draggable="'draggable'" icons="'icons'"></ui-gmap-polylines>	  
 	  </ui-gmap-google-map>
        </div>
 </div>

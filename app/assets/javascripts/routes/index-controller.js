@@ -1,12 +1,4 @@
-RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($scope, $firebase) {
-  $scope.inputData = [{
-    route: 1,
-    color: "992ac5",
-    directions: [{ stops: [{id: 1, lat:123, lon:123}, 
-			   {id:2, lat:124, lon: 123}],
-		   name: "inbound"}],
-		   paths:[[{lat: 39.42193, lon:-119.75829}, {lat: 39.47201, lon:-119.78316}], [{lat: 39.47201, lon:-119.78316}, {lat: 39.46481, lon:-119.77804}]]
-		}];
+RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesService', function ($scope, $firebase, routesService) {
 
   $scope.routes = [];
   $scope.message = "Angular is working!";
@@ -24,6 +16,8 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($s
   // download the data into a local object
   $scope.data = sync.$asObject();
   
+
+
   $scope.init = function(data) {
     $scope.message = data[0].tag;
     data.map(function(route) {
@@ -32,34 +26,51 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($s
 	direction.stops.map(function(stop) {
 	  $scope.stops.push({latitude: stop.lat, longitude: stop.lon, title: stop.title, id: stop.id});
 	})
-	/*var bus ={
-	id: direction.id,
-	path: line,
-	stroke: { color: '#' + route.color, weight: 4, opacity: 1 },
-	geodesic: true,
-	visible: true,
-	editable: false
-	}
-	$scope.polyLines.push(bus);*/
 
       });
     })
     stopData = $scope.stops;
   }
 
-$scope.events =  {
-  zoom_changed: function (event) {
-    if(event.zoom > 15)
-    {
-      $scope.stops = stopData;
-    }
-    else {
-      for(var i = 0;i<$scope.markerControl.getGMarkers().length;i++){
-	$scope.markerControl.getGMarkers()[i].setVisible(false);
+  $scope.selectMarker = function() {
+
+
+  }
+
+  var drawLines = function(route, weight) {
+    route = 9; 
+    routesService.get(route).then(function (routeInfo) {
+      routeInfo.data.paths.map(function (path) {
+	var drawPath = [];
+	path.points.map(function(line) {
+	  drawPath.push({latitude: line.lat, longitude: line.lon});
+	})
+	var bus = {
+	  id: path.id,
+	path: drawPath,
+	stroke: { color: '#' + routeInfo.color, weight: 4, opacity: 1 },
+	geodesic: true,
+	visible: true,
+	editable: false
+	}
+	$scope.polyLines.push(bus);
+
+      })
+    })
+  }
+
+  drawLines();
+
+  $scope.events =  {
+    zoom_changed: function (event) {
+      if(event.zoom > 15) {
+	//get relevant points
+
       }
+
+
     }
   }
 
-}
 
 }]);
