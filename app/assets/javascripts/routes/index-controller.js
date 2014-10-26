@@ -13,6 +13,9 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($s
   $scope.polyLines = [];
   $scope.map = {center: {latitude: 39.42193, longitude: -119.75829 }, zoom: 14 };
   $scope.options = {scrollwheel: false};
+  $scope.stops = [];
+  $scope.markerControl = {};
+  var stopData = [];
 
   var transitLine = 'X';
   var transitRef = new Firebase("https://publicdata-transit.firebaseio.com/reno");
@@ -23,15 +26,13 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($s
   
   $scope.init = function(data) {
     $scope.message = data[0].tag;
-    
     data.map(function(route) {
       route.directions.map(function (direction) {
 	var line = [];
 	direction.stops.map(function(stop) {
-	  line.push({latitude: stop.lat, longitude: stop.lon});
+	  $scope.stops.push({latitude: stop.lat, longitude: stop.lon, title: stop.title, id: stop.id});
 	})
-
-	var bus ={
+	/*var bus ={
 	id: direction.id,
 	path: line,
 	stroke: { color: '#' + route.color, weight: 4, opacity: 1 },
@@ -39,9 +40,26 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($s
 	visible: true,
 	editable: false
 	}
-	$scope.polyLines.push(bus);
+	$scope.polyLines.push(bus);*/
 
       });
     })
+    stopData = $scope.stops;
   }
+
+$scope.events =  {
+  zoom_changed: function (event) {
+    if(event.zoom > 15)
+    {
+      $scope.stops = stopData;
+    }
+    else {
+      for(var i = 0;i<$scope.markerControl.getGMarkers().length;i++){
+	$scope.markerControl.getGMarkers()[i].setVisible(false);
+      }
+    }
+  }
+
+}
+
 }]);

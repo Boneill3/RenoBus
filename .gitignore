@@ -16,3 +16,4 @@
 /tmp
 *.sw*
 vendor/assets/bower_components
+.DS_Store
