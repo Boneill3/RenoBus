@@ -55,9 +55,8 @@ label: 'title'};
         id: path.id,
         path: drawPath,
       stroke: { color: routeInfo.color, weight: 2, opacity: 1 },
-      geodesic: true,
       visible: true,
-      editable: false
+      static: true
     }
     $scope.polyLines.push(bus);
 
