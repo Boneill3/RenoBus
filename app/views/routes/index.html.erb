@@ -2,10 +2,10 @@
   <div class="col-md-10">
     <div class="map_container">
       <div id="map-canvas" class="map_canvas">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" events="events">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="mapOptions" events="events">
     <ui-gmap-polylines models="polyLines" path="'path'" stroke="'stroke'" visible="'visible'" static="'false'"
-    geodesic="'geodesic'" fit="false" editable="'editable'" draggable="'draggable'" icons="'icons'" options="markerOptions"></ui-gmap-polylines>
-    <ui-gmap-markers models="stops" coords="'self'" doCluster="'true'" control="markerControl" click="selectMarker">
+    geodesic="'geodesic'" fit="false" editable="'editable'" draggable="'draggable'" icons="'icons'" ></ui-gmap-polylines>
+    <ui-gmap-markers models="stops" coords="'self'" doCluster="'true'" >
       <ui-gmap-windows show="show">
 	<div ng-non-bindable>{{title}}</div>
       </ui-gmap-windows>	   	
