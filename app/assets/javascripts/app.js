@@ -1,4 +1,4 @@
-RenoBusModule = angular.module('renoBus', ['google-maps'.ns()]);
+RenoBusModule = angular.module('renoBus', ['google-maps'.ns(), 'firebase']);
 
 //'GoogleMapApiProvider'.ns() == 'uiGmapGoogleMapApiProvider'
 /*    .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {

@@ -5,6 +5,8 @@
     "angular": "latest",
     "angular-ui-router": "latest",
     "angular-google-maps": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "firebase": "latest",
+    "angularfire": "latest"
   }
 }

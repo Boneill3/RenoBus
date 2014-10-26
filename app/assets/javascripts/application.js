@@ -17,6 +17,8 @@
 //= require 'angular-rails-templates'
 //= require 'underscore'
 //= require 'angular-google-maps'
+//= require 'firebase'
+//= require 'angularfire'
 //
 //= require 'app'
 //= require_tree './routes'

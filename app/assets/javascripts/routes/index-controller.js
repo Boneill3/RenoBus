@@ -1,4 +1,4 @@
-RenoBusModule.controller('routesIndexCtrl', ['$scope', function ($scope) {
+RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($scope, $firebase) {
   $scope.inputData = [{
     route: 1,
     color: "992ac5",
@@ -12,8 +12,15 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', function ($scope) {
   $scope.message = "Angular is working!";
   $scope.polyLines = [];
   $scope.map = {center: {latitude: 39.42193, longitude: -119.75829 }, zoom: 14 };
-        $scope.options = {scrollwheel: false};
+  $scope.options = {scrollwheel: false};
 
+  var transitLine = 'X';
+  var transitRef = new Firebase("https://publicdata-transit.firebaseio.com/reno");
+  // create an AngularFire reference to the data
+  var sync = $firebase(transitRef);
+  // download the data into a local object
+  $scope.data = sync.$asObject();
+  
   $scope.init = function() {
     $scope.inputData.map(function(route) {
       route.paths.map(function (paths) {
