@@ -6,14 +6,21 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesServi
   $scope.map = {center: {latitude: 39.527222, longitude:  -119.821944 }, zoom: 12 };  
   $scope.mapOptions = {scrollwheel: false};
   $scope.stops = [];
+  $scope.routes = [];
+  $scope.routes2 = [];
   var stopData = [];
 
   $scope.init = function(data) {
     var i = 0;
     _.each(data, function(route) {
       route.color = colors[i];
-      i++;
       drawLines(route);
+      if(i%2) {
+	$scope.routes.push(route);
+      } else {
+	$scope.routes2.push(route);
+      }
+      i++;
       _.each(route.directions, function (direction) {
         var line = [];
        _.each(direction.stops, function(stop) {

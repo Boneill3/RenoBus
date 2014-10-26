@@ -15,35 +15,9 @@
     </div>
   </div>
   <div class="col-md-1">
-    <button type="button" class="btn btn-default btn-block"><span style="color: #290EE3">Sierra Spirit</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FF0099">Rapid</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #963AC9">Route 1</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #E81014">Route 2</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #B7DB3F">Route 2S</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #B7DB3F">Route 3CC</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #CCCCCC">Route 3CL</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FF99D6">Route 4</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #257D22">Route 5</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #A30029">Route 6</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #5FC1D9">Route 7</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #8B8B8B">Route 9</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #40CA3A">Route 11</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #575757">Route 12</span></button>
+    <button ng-repeat="route in routes" type="button" class="btn btn-default btn-block"><span ng-style="{color: route.color}">{{route.tag}}</span></button>
   </div>
   <div class="col-md-1">
-    <button type="button" class="btn btn-default btn-block"><span style="color: #290EE3">Route 13</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FF0099">Route 14</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #18E50E">Route 15</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FFCC10">Route 16</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #444900">Route 17</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #18E50E">Route 18</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FFCC10">Route 18X</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #444900">Route 19</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #18E50E">Route 21</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FFCC10">Route 25</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #444900">Route 26</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #18E50E">Route 54</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #FFCC10">Route 56</span></button>
-    <button type="button" class="btn btn-default btn-block"><span style="color: #444900">Intercity</span></button>
+     <button ng-repeat="route in routes2" type="button" class="btn btn-default btn-block"><span ng-style="{color: route.color}">{{route.tag}}</span></button>
   </div>
 </div>
