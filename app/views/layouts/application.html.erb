@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reno Bus</title>
+<!--
 <style type="text/css">
-        #map_canvas {
-            height: 500px;
-            width: 500px;
-            margin: 0px;
-        }
+  #map_canvas {
+  height: 500px;
+  width: 500px;
+  margin: 0px;
+  }
 
-        #map_canvas {
-            position: relative;
-        }
+  #map_canvas {
+  position: relative;
+  }
 
-        .angular-google-map-container {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
-    </style>
-  <title>RenoBus</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  .angular-google-map-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  }
+</style> -->
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
 
-  <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>-->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,900' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="renoBus">
+<header class="navbar navbar-inverse normal" role="banner">
+<div class="container">
+  <div class="navbar-header">
+    <img class="navbar-left" height="80" alt="Reno Bus" src="reno_bus_logo.png"></img>
+    <h1 class="navbar-left">RENO BUS</h1>
+    <div>
+    </div>
+</header>
 
-<%= yield %>
+<div class="container">
+  <div id="status" class="row">
+    <h4>System Alerts</h4>
+    <h5>Rte 56: posted Oct 24, 8:00 AM</h5>
+    <p>Expected through Oct 25, 5:00 PM<br />
+    Due to utility work at Longley and Huffaker, the Rte 56 is on detour Out only. The two stops on Bluestone will be out of service. For the stop at Bluestone and Huffaker, passengers are directed to Colbert and Longley (across from the Rainbow Market) and for the stop at Bluestone and Portman, passengers are directed to the next stop on Offenhauser.</p>
+  </div>
+  <%= yield %>
+</div>
 
 </body>
 </html>
