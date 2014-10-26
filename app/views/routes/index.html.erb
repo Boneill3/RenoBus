@@ -5,7 +5,7 @@
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="mapOptions" events="events">
     <ui-gmap-polylines models="polyLines" path="'path'" stroke="'stroke'" visible="'visible'" static="'false'"
     geodesic="'geodesic'" fit="false" editable="'editable'" draggable="'draggable'" icons="'icons'" ></ui-gmap-polylines>
-    <ui-gmap-markers models="stops" coords="'self'" doCluster="'true'" >
+    <ui-gmap-markers models="stops" coords="'self'" doCluster="'true'" click="selectMarker" >
       <ui-gmap-windows show="show">
 	<div ng-non-bindable>{{title}}</div>
       </ui-gmap-windows>	   	

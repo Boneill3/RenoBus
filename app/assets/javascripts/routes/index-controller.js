@@ -44,6 +44,7 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesServi
   }
 
   $scope.selectMarker = function(marker) {
+    $scope.showAllRoutes = false;
     _.each($scope.polyLines, function (line) {
       if (line.routeId == stopData[marker.key].route) {
         line.visible = true;
@@ -54,12 +55,13 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesServi
   }
 
   $scope.selectButton = function (route) {
+    if($scope.showAllRoutes) {
+      $scope.toggle();
+    }
     _.each($scope.polyLines, function(line) {
       if (line.routeId == route.id) {
-	line.visible = true;
-      } else {
-	line.visible = false;
-      }
+	line.visible = !line.visible;
+    }
     })
   };
 
