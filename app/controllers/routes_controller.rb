@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
   def index
-    @routes_json = Route.includes(directions: [:stops]).all.to_json(include: {directions: {include: :stops} }) 
+    @routes_json = Route.includes(directions: [:stops], paths: [:points]).all.to_json(include: {directions: {include: :stops}, paths: {include: :points} }) 
   end
 
   def show
