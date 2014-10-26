@@ -45,6 +45,16 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', 'routesServi
     })
   }
 
+  $scope.selectButton = function (route) {
+    _.each($scope.polyLines, function(line) {
+      if (line.routeId == route.id) {
+	line.visible = true;
+      } else {
+	line.visible = false;
+      }
+    })
+  };
+
   var drawLines = function(routeInfo) {
     routeInfo.paths.map(function (path) {
       var drawPath = [];
