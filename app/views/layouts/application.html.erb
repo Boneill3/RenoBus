@@ -35,7 +35,7 @@
 <header class="navbar navbar-inverse normal" role="banner">
 <div class="container">
   <div class="navbar-header">
-    <img class="navbar-left" height="80" alt="Reno Bus" src="reno_bus_logo.png"></img>
+    <img class="navbar-left" height="80" alt="Reno Bus" src="<%= asset_path 'reno_bus_logo.png' %>"></img>
     <h1 class="navbar-left">RENO BUS</h1>
     <div>
     </div>
@@ -51,5 +51,15 @@
   <%= yield %>
 </div>
 
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <a href="//www.rtcwashoe.com/public-transportation-88">Washoe Regional Transportation Commission</a>
+        <p class="text-muted">Reno Bus - product of 
+        <a href="//hack4reno.com" alt="Hack4Reno">Hack4Reno</a> </p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
