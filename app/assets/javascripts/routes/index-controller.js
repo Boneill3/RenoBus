@@ -42,6 +42,13 @@ label: 'title'};
   }
 
   $scope.selectMarker = function(marker) {
+    _.each($scope.polyLines, function (line) {
+      if (line.routeId == stopData[marker.key].route) {
+        line.visible = true;
+      } else {
+        line.visible = false;
+      }
+    })
   }
 
 
@@ -56,7 +63,7 @@ label: 'title'};
         path: drawPath,
       stroke: { color: routeInfo.color, weight: 2, opacity: 1 },
       visible: true,
-      static: true
+      routeId: routeInfo.id
     }
     $scope.polyLines.push(bus);
 
