@@ -21,18 +21,20 @@ RenoBusModule.controller('routesIndexCtrl', ['$scope', '$firebase', function ($s
   // download the data into a local object
   $scope.data = sync.$asObject();
   
-  $scope.init = function() {
-    $scope.inputData.map(function(route) {
-      route.paths.map(function (paths) {
+  $scope.init = function(data) {
+    $scope.message = data[0].tag;
+    
+    data.map(function(route) {
+      route.directions.map(function (direction) {
 	var line = [];
-	paths.map(function(path) {
-	  line.push({latitude: path.lat, longitude: path.lon});
+	direction.stops.map(function(stop) {
+	  line.push({latitude: stop.lat, longitude: stop.lon});
 	})
 
 	var bus ={
-	  id: 1,
+	id: direction.id,
 	path: line,
-	stroke: { color: route.color, weight: 4, opacity: 1 },
+	stroke: { color: '#' + route.color, weight: 4, opacity: 1 },
 	geodesic: true,
 	visible: true,
 	editable: false
